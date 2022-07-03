@@ -282,7 +282,7 @@ const colorSets = {
     
     '--color-building-normal-main--': [ 20, 20, 20 ],
     '--color-building-middle-main--': [ 40, 40, 40 ],
-    '--color-building-high-main--': [ 100, 100, 120 ],
+    '--color-building-high-main--': [ 100, 100, 100 ],
     
     '--color-wetland-main-main--': [ 100, 100, 100 ],
     '--color-landform-main-main--': [ 50, 50, 50 ],
@@ -311,7 +311,7 @@ const colorSets = {
     '--color-railway-all-back--': [ 30, 30, 30 ],
     
     '--color-road-major-main--': [ 60, 60, 60 ],
-    '--color-road-normal-main--': [ 40, 40, 40 ],
+    '--color-road-normal-main--': [ 50, 50, 50 ],
     '--color-road-highway-main--': [ 80, 90, 100 ],
     '--color-road-prefectural-main--': [ 60, 60, 60 ],
     '--color-road-expressway-main--': [ 100, 110, 120 ],
@@ -337,12 +337,12 @@ const colorSets = {
     '--color-text-white-main--': [ 255, 255, 255 ],
     '--color-text-white-halo--': [ 50, 50, 50 ],
     
-    "--color-line-gray--": [ 80, 80, 80 ],
+    "--color-line-gray--": [ 80, 90, 100 ],
   }
   
 }
 
-const mode = "m2";
+const mode = "dark2";
 colorSet = colorSets[mode] || colorSets["basic"];
 
 const changeColor = (arr, info={}) => {
@@ -358,14 +358,15 @@ const changeColor = (arr, info={}) => {
   if(mode == "m"){
   //モノクロ
     if( s > 0 ) s = 1;
-    if( l < 50 && l > 0) l = l + (50 - l);
+    if( l < 50 && l > 0 && !info["prop-name"].match("text-color")) l = l + (50 - l);
     return(["hsla", h, s + "%", l + "%", a]);
   
   }else if(mode == "m2"){
   //モノクロ風（少し色付き）
     h = 200;
     if( s > 0 ) s = 10;
-    if( l < 50 && l > 0) l = l + (50 - l);
+    if( s > 0 && info["prop-name"].match("text-color") ) s = 30;
+    if( l < 50 && l > 0 && !info["prop-name"].match("text-color")) l = l + (50 - l);
     return(["hsla", h, s + "%", l + "%", a]);
   
   }else{
@@ -407,5 +408,5 @@ console.log(tmp2);
 
 
 const resstring = JSON.stringify(style);
-fs.writeFileSync("style.json", resstring);
+fs.writeFileSync("./docs/style.json", resstring);
 

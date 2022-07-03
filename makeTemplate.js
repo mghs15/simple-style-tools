@@ -7,11 +7,10 @@ const layers = style.layers;
 const tmp = {
   "r": {}, "g": {}, "b": {}, "m": {}
 };
-const tmp2 = {
+const tmp2 = {};
+const tmp3 = {};
 
-};
-
-const collectColorInfo = (colorInfo)=>{
+const collectColorInfo = (colorInfo, info={})=>{
   if(Array.isArray(colorInfo)){
     colorInfo.forEach( colorInfoElement => {
       collectColorInfo(colorInfoElement);
@@ -19,6 +18,8 @@ const collectColorInfo = (colorInfo)=>{
   }else if(typeof(colorInfo)=="string" && ( colorInfo.match(/^rgb/) || colorInfo.match(/^hsl/))){
     
     const ct = classifyColor(colorInfo);
+    
+    const identifier = (info.metadata) ? info.metadata.path || info.id : info.id;
     
     if(tmp[ct][colorInfo]){
       tmp[ct][colorInfo] += 1;
@@ -102,10 +103,20 @@ const convertColor = (colorInfo, arr=[], info={}) => {
       colorInfo2 = setupColor(colorInfo);
     }
     
-    if(tmp2[colorInfo2]){
-      tmp2[colorInfo2] += 1;
+    if(tmp3[colorInfo2]){
+      tmp3[colorInfo2] += 1;
     }else{
-      tmp2[colorInfo2] = 1;
+      tmp3[colorInfo2] = 1;
+    }
+    
+    
+    const identifier = (info.metadata) ? info.metadata.path || info.id : info.id;
+    if( colorInfo2.match(/^rgb/) || colorInfo2.match(/^hsl/) ){
+      if(tmp2[colorInfo2]){
+        tmp2[colorInfo2].push( identifier );
+      }else{
+        tmp2[colorInfo2] = [ identifier ];
+      }
     }
     
     return(colorInfo2); 
@@ -233,7 +244,7 @@ layers.forEach( layer => {
     for( name in layer.paint){
       if(name.match("color")){
         const colorInfo = layer.paint[name];
-        collectColorInfo(colorInfo); // 分析
+        collectColorInfo(colorInfo, { ...layer, "prop-name": name}); // 分析
         layer.paint[name] = convertColor(colorInfo, [], { ...layer, "prop-name": name});
         //console.log(layer.paint[name]);
       }
@@ -246,7 +257,7 @@ console.log(tmp);
 console.log(tmp2);
 //console.log(layers);
 
-console.log(Object.keys(tmp2).sort());
+console.log(Object.keys(tmp3).sort());
 
 
 
