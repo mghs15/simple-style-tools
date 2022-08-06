@@ -188,6 +188,7 @@ const addArrEle = (arr, ele) => {
 }
 
 const convertColor = (colorInfo, arr=[], info={}) => {
+  //colorInfoが配列か色情報文字列（例：'--color-background-base-main--'）かどうかで分岐
   if(Array.isArray(colorInfo)){
     colorInfo.forEach( colorInfoElement => {
       arr.push(convertColor(colorInfoElement, [], info));
@@ -202,7 +203,7 @@ const convertColor = (colorInfo, arr=[], info={}) => {
       colArr1 = parsecolor(colorInfo);
     }else{
       console.log(colorInfo);
-      const colSetArr = colorSet[colorInfo] || [255, 255, 255];
+      const colSetArr = colorSet[colorInfo] || colorSet["default"] || [255, 255, 255];
       colArr1 = ["rgba", ...colSetArr, 1];
     }
     
@@ -242,6 +243,7 @@ const colorSets = {
     '--color-road-prefectural-main--': [ 255, 210, 110 ],
     '--color-road-expressway-main--': [ 0, 150, 0 ],
     '--color-road-all-back--': [ 220, 220, 220 ],
+    '--color-road-edge--': [ 100, 100, 100 ],
     
     '--color-building-normal-main--': [ 255, 230, 190 ],
     '--color-building-middle-main--': [ 220, 220, 220 ],
@@ -263,7 +265,7 @@ const colorSets = {
     '--color-text-white-main--': [ 255, 255, 255 ],
     '--color-text-white-halo--': [ 255, 255, 255 ],
     
-    "--color-line-gray--": [ 120, 120, 120 ],
+    '--color-line-gray--': [ 120, 120, 120 ],
   },
   
   "dark": {
@@ -279,6 +281,7 @@ const colorSets = {
     '--color-road-prefectural-main--': [ 60, 60, 60 ],
     '--color-road-expressway-main--': [ 150, 150, 150 ],
     '--color-road-all-back--': [ 30, 30, 30 ],
+    '--color-road-edge--': [ 60, 60, 60 ],
     
     '--color-building-normal-main--': [ 20, 20, 20 ],
     '--color-building-middle-main--': [ 40, 40, 40 ],
@@ -300,7 +303,7 @@ const colorSets = {
     '--color-text-white-main--': [ 255, 255, 255 ],
     '--color-text-white-halo--': [ 50, 50, 50 ],
     
-    "--color-line-gray--": [ 80, 80, 80 ],
+    '--color-line-gray--': [ 80, 80, 80 ],
   },
   
   "dark2": {
@@ -316,6 +319,7 @@ const colorSets = {
     '--color-road-prefectural-main--': [ 60, 60, 60 ],
     '--color-road-expressway-main--': [ 100, 110, 120 ],
     '--color-road-all-back--': [ 30, 30, 30 ],
+    '--color-road-edge--': [ 60, 60, 60 ],
     
     '--color-building-normal-main--': [ 20, 25, 30 ],
     '--color-building-middle-main--': [ 40, 45, 50 ],
@@ -337,12 +341,90 @@ const colorSets = {
     '--color-text-white-main--': [ 255, 255, 255 ],
     '--color-text-white-halo--': [ 50, 50, 50 ],
     
-    "--color-line-gray--": [ 80, 90, 100 ],
+    '--color-line-gray--': [ 80, 90, 100 ],
+  },
+  
+  "blueprint": {
+    '--color-background-base-main--': [ 0, 160, 255 ],
+    
+    '--color-railway-normal-main--': [ 255, 255, 255 ],
+    '--color-railway-shinkansen-main--': [ 255, 255, 255 ],
+    '--color-railway-all-back--': [ 0, 160, 255 ],
+    
+    '--color-road-major-main--': [ 0, 160, 255 ],
+    '--color-road-normal-main--': [ 0, 160, 255 ],
+    '--color-road-highway-main--': [ 0, 160, 255 ],
+    '--color-road-prefectural-main--': [ 0, 160, 255 ],
+    '--color-road-expressway-main--': [ 0, 160, 255 ],
+    '--color-road-all-back--': [ 255, 255, 255  ],
+    '--color-road-edge--': [ 255, 255, 255  ],
+    
+    '--color-building-normal-main--': [ 255, 255, 255 ],
+    '--color-building-middle-main--': [ 255, 255, 255 ],
+    '--color-building-high-main--': [ 255, 255, 255 ],
+    
+    '--color-wetland-main-main--': [ 255, 255, 255 ],
+    '--color-landform-main-main--': [ 255, 255, 255 ],
+    
+    '--color-water-main-main--': [ 210, 240, 255 ],
+    '--color-water-main-vivid--': [ 255, 255, 255 ],
+    '--color-water-main-blank--': [ 255, 255, 255 ],
+    
+    '--color-border-muni-main--': [ 255, 255, 255 ],
+    
+    '--color-text-gray-main--': [ 255, 255, 255 ],
+    '--color-text-black-main--': [ 255, 255, 255 ],
+    '--color-text-green-main--': [ 255, 255, 255 ],
+    '--color-text-blue-main--': [ 255, 255, 255 ],
+    '--color-text-white-main--': [ 255, 255, 255 ],
+    '--color-text-white-halo--': [ 0, 160, 255 ],
+    
+    '--color-line-gray--': [ 255, 255, 255 ],
+  },
+  
+  "radar": {
+    'default': [ 0, 0, 0 ],
+    
+    '--color-background-base-main--': [ 0, 0, 0 ],
+    
+    '--color-railway-normal-main--': [ 0, 255, 100 ],
+    '--color-railway-shinkansen-main--': [ 0, 255, 100 ],
+    '--color-railway-all-back--': [ 0, 0, 0 ],
+    
+    '--color-road-major-main--': [ 0, 0, 0 ],
+    '--color-road-normal-main--': [ 0, 0, 0 ],
+    '--color-road-highway-main--': [ 0, 0, 0 ],
+    '--color-road-prefectural-main--': [ 0, 0, 0 ],
+    '--color-road-expressway-main--': [ 0, 0, 0 ],
+    '--color-road-all-back--': [ 0, 255, 100  ],
+    '--color-road-edge--': [ 0, 255, 100  ],
+    
+    '--color-building-normal-main--': [ 0, 255, 100 ],
+    '--color-building-middle-main--': [ 0, 255, 100 ],
+    '--color-building-high-main--': [ 0, 255, 100 ],
+    
+    '--color-wetland-main-main--': [ 0, 255, 100 ],
+    '--color-landform-main-main--': [ 0, 255, 100 ],
+    
+    '--color-water-main-main--': [ 30, 30, 30 ],
+    '--color-water-main-vivid--': [ 0, 255, 100 ],
+    '--color-water-main-blank--': [ 0, 255, 100 ],
+    
+    '--color-border-muni-main--': [ 0, 255, 100 ],
+    
+    '--color-text-gray-main--': [ 0, 255, 100 ],
+    '--color-text-black-main--': [ 0, 255, 100 ],
+    '--color-text-green-main--': [ 0, 255, 100 ],
+    '--color-text-blue-main--': [ 0, 255, 100 ],
+    '--color-text-white-main--': [ 0, 255, 100 ],
+    '--color-text-white-halo--': [ 0, 0, 0 ],
+    
+    '--color-line-gray--': [ 0, 255, 100 ],
   }
   
 }
 
-const mode = "dark2";
+const mode = "m2";
 colorSet = colorSets[mode] || colorSets["basic"];
 
 const changeColor = (arr, info={}) => {

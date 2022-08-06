@@ -2047,7 +2047,7 @@
                 ]
             ],
             "paint": {
-                "fill-color": "rgba(200,160,60,1)",
+                "fill-color": "--color-landform-main-main--",
                 "fill-opacity": 0.2
             },
             "id": "gsibv-vectortile-layer-928",
@@ -2078,7 +2078,7 @@
                 ]
             ],
             "paint": {
-                "fill-color": "rgba(200,160,60,1)",
+                "fill-color": "--color-landform-main-main--",
                 "fill-opacity": 0.2
             },
             "id": "gsibv-vectortile-layer-929",
@@ -3051,7 +3051,7 @@
                 ]
             ],
             "paint": {
-                "fill-color": "rgba(200,200,200,1)"
+                "fill-color": "--color-line-gray--"
             },
             "id": "gsibv-vectortile-layer-960",
             "layout": {
@@ -5204,7 +5204,7 @@
                 ]
             ],
             "paint": {
-                "line-color": "rgba(170,170,170,1)",
+                "line-color": "--color-border-muni-main--",
                 "line-width": 2.5,
                 "line-dasharray": [
                     7,
@@ -5240,7 +5240,7 @@
                 ]
             ],
             "paint": {
-                "line-color": "--color-line-gray--",
+                "line-color": "--color-border-muni-main--",
                 "line-width": 2.5,
                 "line-dasharray": [
                     7,
@@ -5276,7 +5276,7 @@
                 ]
             ],
             "paint": {
-                "line-color": "rgba(170,170,170,1)",
+                "line-color": "--color-border-muni-main--",
                 "line-width": 1.5,
                 "line-dasharray": [
                     6,
@@ -5314,7 +5314,7 @@
                 ]
             ],
             "paint": {
-                "line-color": "--color-line-gray--",
+                "line-color": "--color-border-muni-main--",
                 "line-width": 1.5,
                 "line-dasharray": [
                     6,
@@ -5352,7 +5352,7 @@
                 ]
             ],
             "paint": {
-                "line-color": "rgba(170,170,170,1)",
+                "line-color": "--color-border-muni-main--",
                 "line-width": 1.5,
                 "line-opacity": 0.5,
                 "line-dasharray": [
@@ -5447,7 +5447,7 @@
             "minzoom": 11,
             "maxzoom": 17,
             "filter": [
-                "all",
+                "any",
                 [
                     "==",
                     "ftCode",
@@ -5901,7 +5901,7 @@
                 ]
             ],
             "paint": {
-                "line-color": "--color-line-gray--",
+                "line-color": "--color-road-edge--",
                 "line-width": 1
             },
             "layout": {
@@ -6077,7 +6077,7 @@
                 ]
             ],
             "paint": {
-                "line-color": "--color-line-gray--",
+                "line-color": "--color-road-edge--",
                 "line-width": {
                     "stops": [
                         [

@@ -160,6 +160,9 @@ const colorSetOrg = {
   'rgb(238,202,119)': '--color-road-major-main--', //ZL4-8 道路-主要な道路
   'rgba(255,190,190,1)': '--color-road-highway-main--', //☆★国道
   'rgba(255,211,111,1)': '--color-road-prefectural-main--', //☆★県道
+  'rgba(112,112,112,1)': '--color-road-edge--', //道路-徒歩・庭園・石段
+  'rgba(152,152,152,1)' : '--color-road-edge--', //ZL17 道路縁
+  
   'rgb(255,230,190)': '--color-building-normal-main--', //●建物
   
   'rgba(153,238,192,1)': '--color-wetland-main-main--', //湿地
@@ -176,11 +179,13 @@ const colorSetOrg = {
   'rgba(20,90,255,1)': '--color-water-main-vivid--', //水涯線
   'rgba(100,150,255,0.2)': '--color-water-main-vivid--', //万年雪
   'rgba(201,201,181,1)': '--color-landform-main-main--', //砂礫地、岩、崖
+  'rgba(200,160,60,1)': '--color-landform-main-main--', //砂礫地
   'rgba(20, 90, 255,1)': '--color-water-main-vivid--', //水部凹地方向線
   'rgba(100,150,255,1)': '--color-water-main-vivid--', //万年雪
   
-  'rgb(113,112,113)': 'rgb(113,112,113)', //航路-航路
+  'rgb(113,112,113)': '--color-line-gray--', //ZL6-8 航路-航路
   'rgba(200,145,255,1)': '--color-border-muni-main--', //●市区町村界
+  'rgba(170,170,170,1)': '--color-border-muni-main--', //都府県界、所属を明示する境界線
   'rgba(240,240,230,1)': '--color-background-base-main--', //背景色（高架背景）
   'rgba(0,0,255,1)': '--color-railway-shinkansen-main--', //小縮尺 鉄道-通常-新幹線
   'rgb(190,230,255)': '--color-building-high-main--', //●建物（高層建物）
@@ -188,19 +193,17 @@ const colorSetOrg = {
   'rgba(180,180,180,1)': '--color-building-middle-main--', //●建物
   //'rgba(0,0,0,1)': '--color-text-black-main--', //〇文字色
   'rgba(111,111,111,1)': '--color-railway-normal-main--', //★鉄道
-  'rgba(112,112,112,1)': "--color-line-gray--", //道路-徒歩・庭園・石段
-  'rgba(160,160,160,1)': "--color-line-gray--", //雪覆い、航路等
+  'rgba(160,160,160,1)': '--color-line-gray--', //雪覆い、航路等
   //'rgba(255,255,255,1)': 255, //白
   'rgb(200,200,200)': '--color-building-middle-main--', //ZL17-18 建物等
   
-  'rgba(99,99,99,1)' : "--color-line-gray--",
-  'rgba(152,152,152,1)' : "--color-line-gray--",
-  'rgba(112,112,112,1)' : "--color-line-gray--",
-  'rgba(128,128,128,1)' : "--color-line-gray--",
-  'rgb(140,140,140)' : "--color-line-gray--",
-  'rgba(100,100,100,1)' : "--color-line-gray--",
-  'rgb(100,100,100)' : "--color-line-gray--",
-  'rgb(113,112,113)' : "--color-line-gray--",
+  'rgba(99,99,99,1)' : '--color-line-gray--', //送電線、structurel、landforml、堤防など
+  'rgba(128,128,128,1)' : '--color-line-gray--',//高塔
+  'rgb(140,140,140)' : '--color-line-gray--', //見つからない
+  'rgba(100,100,100,1)' : '--color-line-gray--', //特定地区界、その他の境界
+  'rgb(100,100,100)' : '--color-line-gray--', //人工水路、ダム
+  'rgba(200,200,200,1)': '--color-line-gray--', //ダム(面)
+
 }
 
 
