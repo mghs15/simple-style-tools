@@ -203,6 +203,7 @@ const convertColor = (colorInfo, arr=[], info={}) => {
       colArr1 = parsecolor(colorInfo);
     }else{
       console.log(colorInfo);
+      info.colorInfo = colorInfo;
       const colSetArr = colorSet[colorInfo] || colorSet["default"] || [255, 255, 255];
       colArr1 = ["rgba", ...colSetArr, 1];
     }
@@ -424,7 +425,7 @@ const colorSets = {
   
 }
 
-const mode = "m2";
+const mode = "m3";
 colorSet = colorSets[mode] || colorSets["basic"];
 
 const changeColor = (arr, info={}) => {
@@ -449,6 +450,17 @@ const changeColor = (arr, info={}) => {
     if( s > 0 ) s = 10;
     if( s > 0 && info["prop-name"].match("text-color") ) s = 30;
     if( l < 50 && l > 0 && !info["prop-name"].match("text-color")) l = l + (50 - l);
+    return(["hsla", h, s + "%", l + "%", a]);
+  
+  }else if(mode == "m3"){
+  //モノクロ（水域の色調整）
+    if( s > 0 ) s = 1;
+    if( l < 50 && l > 0 && !info["prop-name"].match("text-color")) l = l + (50 - l);
+    
+    if(info && info.colorInfo && info.colorInfo == "--color-water-main-main--"){
+       h = 210; s = 50; l = 90;
+    }
+    
     return(["hsla", h, s + "%", l + "%", a]);
   
   }else{
