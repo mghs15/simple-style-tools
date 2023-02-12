@@ -1,6 +1,10 @@
 # simple-style-tools
 [simple-style](https://github.com/mghs15/simple-style)をいじるためNodeスクリプト
 
+以下のレポジトリをベースに作成
+
+https://github.com/mghs15/style-color-change-on-web
+
 ## 使い方
 1. `makeTemplate.js`でもとになる`basic.json`からひな型となる`template.json`を作成する。
   * 地図デザインで使われている色を、カテゴリごとに分類する。。
