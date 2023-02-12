@@ -3,7 +3,8 @@
 
 以下のレポジトリをベースに作成
 
-https://github.com/mghs15/style-color-change-on-web
+* https://github.com/mghs15/style-color-change-on-web
+* https://github.com/gsi-cyberjapan/gsimaps-vector-experiment
 
 ## 使い方
 1. `makeTemplate.js`でもとになる`basic.json`からひな型となる`template.json`を作成する。
